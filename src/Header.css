@@ -2,4 +2,7 @@ header {
     height: 150px;
     background-color: rgb(173, 173, 229);
     width: 100vw;
-}
+    margin: 0;
+    text-align: center;
+    line-height: 150px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;}

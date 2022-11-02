@@ -8,44 +8,71 @@ import { Component } from 'react';
 class App extends Component {
   state = {
     animals: animals,
+    number: animals.length,
+    search: '',
+
   };
-
-
-
-
 
   addLikeHandler = (name) => {
     this.setState((state) => {
-      const updatedArray = state.animals.map((animal) => {
+      const updatedArray = this.state.animals.map((animal) => {
         if (animal.name === name) {
           return { ...animal, likes: animal.likes + 1 }
         }
         else { return animal }
       })
 
+      this.setState({ animals: updatedArray });
     }
     )
   };
 
-
-  removeCard = (name) => {
+  removeLikeHandler = (name) => {
+    this.setState((state) => {
+      const updatedArray = this.state.animals.map((animal) => {
+        if (animal.name === name) {
+          return { ...animal, likes: animal.likes - 1 }
+        }
+        else { return animal }
+      })
+      this.setState({ animals: updatedArray });
+    })
+  }
+  removeHandler = (name) => {
     const updatedArray = this.state.animals.filter((animal) => animal.name !== name);
     this.setState({ animals: updatedArray });
   }
 
-  animalsList = this.state.animals.map((animal) => (<Card key={animal.name} name={animal.name} likes={animal.likes} removeCard={this.removeCard(animal.name)} addLikeHandler={this.addLikeHandler(animal.name)} />))
+  searchHandler = (e) => {
+    this.setState({ search: e.target.value });
+  }
 
   render() {
-    return (
+    const animalFilter = this.state.animals.filter(animal => { return animal.name.includes(this.state.search); })
+    /**make a new array only containing what has been set in the search field */
 
-      <div className="App">
-        <Header />
-        <div className="mainContainer">{this.animalsList}
+    const animalsList = animalFilter.map((animal) => {
+      return (
+        <Card
+          key={animal.name}
+          name={animal.name.charAt(0).toUpperCase() + animal.name.substring(1)}
+          likes={animal.likes}
+          removeCard={() => this.removeHandler(animal.name)}
+          addLikes={() => this.addLikeHandler(animal.name)}
+          removeLikes={() => this.removeLikeHandler(animal.name)}
+        />);
+    });
+
+    return (
+      <div className="App" >
+        <Header
+          number={this.state.animals.length}
+        />
+        <div className="searchBar"><input onChange={this.searchHandler}></input></div>
+        <div className="mainContainer">{animalsList}
 
         </div></div>)
   }
-
-
 
 }
 

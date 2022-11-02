@@ -1,14 +1,23 @@
 .App {
   text-align: center;
- 
+
 }
 
 .mainContainer {
-
-  display: grid;
-  grid-template-rows: repeat(auto, 1fr);
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 1rem;
+  display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   width: 100vw;
+  background-color: rgb(188, 188, 216);
+}
+
+.searchBar {
+  height: 50px;
+  background-color: rgb(173, 173, 229);
+}
+
+.searchBar input {
+  border-radius: 14px;
+  border: inset;
+
 }

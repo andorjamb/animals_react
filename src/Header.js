@@ -1,9 +1,9 @@
 import './Header.css';
 
-const Header = function () {
+const Header = function (props) {
 
     return (
-        <header><h1>Animals</h1></header>
+        <header><h1>{props.number} Animals</h1></header>
 
     )
 }
