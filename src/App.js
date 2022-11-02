@@ -11,15 +11,41 @@ class App extends Component {
   };
 
 
+
+
+
+  addLikeHandler = (name) => {
+    this.setState((state) => {
+      const updatedArray = state.animals.map((animal) => {
+        if (animal.name === name) {
+          return { ...animal, likes: animal.likes + 1 }
+        }
+        else { return animal }
+      })
+
+    }
+    )
+  };
+
+
+  removeCard = (name) => {
+    const updatedArray = this.state.animals.filter((animal) => animal.name !== name);
+    this.setState({ animals: updatedArray });
+  }
+
+  animalsList = this.state.animals.map((animal) => (<Card key={animal.name} name={animal.name} likes={animal.likes} removeCard={this.removeCard(animal.name)} addLikeHandler={this.addLikeHandler(animal.name)} />))
+
   render() {
     return (
 
       <div className="App">
         <Header />
-        <div className="mainContainer">
-          {animals.map((animal) => <Card key={animal.name} name={animal.name} likes={animal.likes} />)}
+        <div className="mainContainer">{this.animalsList}
+
         </div></div>)
   }
+
+
 
 }
 
