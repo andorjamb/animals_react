@@ -31,7 +31,10 @@ class App extends Component {
     this.setState((state) => {
       const updatedArray = this.state.animals.map((animal) => {
         if (animal.name === name) {
-          return { ...animal, likes: animal.likes - 1 }
+          if (animal.likes === 0) {
+            return { ...animal, likes: 0 }
+          }
+          else { return { ...animal, likes: animal.likes - 1 } }
         }
         else { return animal }
       })
@@ -44,7 +47,7 @@ class App extends Component {
   }
 
   searchHandler = (e) => {
-    this.setState({ search: e.target.value });
+    this.setState({ search: e.target.value.toLowerCase() });
   }
 
   render() {
@@ -67,9 +70,12 @@ class App extends Component {
       <div className="App" >
         <Header
           number={this.state.animals.length}
+          click={() => this.setState({ animals: animals })}
         />
         <div className="searchBar"><input onChange={this.searchHandler}></input></div>
-        <div className="mainContainer">{animalsList}
+        <div className="mainContainer">
+
+          {animalsList}
 
         </div></div>)
   }

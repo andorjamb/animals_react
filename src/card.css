@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined");
 
 .card {
-    height: 335px;
-    width: 200px;
+    max-height: 335px;
+    max-width: 200px;
     flex: 20%;
     margin: 1rem;
     padding: 0;
