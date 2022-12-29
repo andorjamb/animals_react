@@ -3,7 +3,8 @@ import './Card.css';
 
 function Card(props) {
     return (<div className="card">
-        <div className="name-div"><h2>{props.name}</h2><button className="removeBtn" onClick={props.removeCard}>X</button>
+        <div className="name-div"><h2>{props.name}</h2>
+            <button className="removeBtn" onClick={props.removeCard}>X</button>
         </div>
 
         <img src={`https://source.unsplash.com/500x400/?${props.name}`} alt={props.name} />

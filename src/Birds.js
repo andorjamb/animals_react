@@ -11,7 +11,7 @@ const Birds = (props) => {
                 name={bird.name}
                 key={bird.name.toLowerCase()}
                 likes={bird.likes}
-                removeCard={() => props.birdRemoveHandler(bird.name.toLowerCase())}
+                removeCard={() => props.removeBird(bird.name)}
                 addLike={() => props.birdAddLikeHandler(bird.name)}
                 removeLike={() => props.birdRemoveLikeHandler(bird.name)}
                 searchHandler={() => props.searchHandler()}

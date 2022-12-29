@@ -81,13 +81,13 @@ class App extends Component {
 
 
 
-  animalRemoveHandler = (name) => {
+  removeAnimalHandler = (name) => {
     const updatedAnimals = this.state.animals.filter((animal) => animal.name !== name.toLowerCase());
     this.setState({ animals: updatedAnimals });
   }
 
-  birdRemoveHandler = (name) => {
-    const updatedBirds = this.state.birds.filter((bird) => bird.name !== name.toLowerCase());
+  removeBirdHandler = (name) => {
+    const updatedBirds = this.state.birds.filter((bird) => bird.name.toLowerCase() !== name.toLowerCase());
     this.setState({ birds: updatedBirds });
   }
 
@@ -109,7 +109,7 @@ class App extends Component {
             <Route path="/animals" element={<Animals
               animals={this.state.animals}
               search={this.state.search}
-              removeAnimal={this.animalRemoveHandler}
+              removeAnimal={this.removeAnimalHandler}
               animalAddLike={this.animalAddLikeHandler}
               animalRemoveLike={this.animalRemoveLikeHandler}
             />}></Route>
@@ -118,7 +118,7 @@ class App extends Component {
               birds={this.state.birds}
               search={this.state.search}
               searchHandler={this.searchHandler}
-              birdRemoveHandler={this.birdRemoveHandler}
+              removeBird={this.removeBirdHandler}
               birdAddLikeHandler={this.birdAddLikeHandler}
               birdRemoveLikeHandler={this.birdRemoveLikeHandler} />}>
             </Route>
