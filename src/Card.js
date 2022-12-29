@@ -7,7 +7,9 @@ function Card(props) {
         </div>
 
         <img src={`https://source.unsplash.com/500x400/?${props.name}`} alt={props.name} />
-        <div className="likeBar"><button className="dislikesBtn" onClick={props.removeLike}>heart_minus</button><p className="heart">Favorite{props.likes}</p>
+        <div className="likeBar">
+            <button className="dislikesBtn" onClick={props.removeLike}>heart_minus</button>
+            <p className="heart">Favorite{props.likes}</p>
             <button className="addLikesBtn" onClick={props.addLike}>heart_plus</button>
         </div>
     </div>)

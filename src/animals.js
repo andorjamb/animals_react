@@ -10,10 +10,10 @@ const Animals = (props) => {
             name={animal.name.charAt(0).toUpperCase() + animal.name.substring(1)}
             key={animal.name}
             likes={animal.likes}
-            removeCard={() => props.animalRemoveHandler(animal.name)}
-            addLike={() => props.animalAddLikeHandler(animal.name)}
-            removeLike={() => props.animalRemoveLikeHandler(animal.name)}
-            searchHandler={() => props.searchHandler()}
+            removeCard={() => props.removeAnimal(animal.name)}
+            addLike={() => props.animalAddLike(animal.name)}
+            removeLike={() => props.animalRemoveLike(animal.name)}
+
         />
     });
 

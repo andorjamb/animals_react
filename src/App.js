@@ -18,8 +18,12 @@ class App extends Component {
     search: '',
   };
 
+  searchHandler = (e) => {
+    this.setState({ search: e.target.value.toLowerCase() });
+  }
+
   animalAddLikeHandler = (name) => {
-    this.setState((animals) => {
+    this.setState(animals => {
       const updatedAnimals = this.state.animals.map((animal) => {
         if (animal.name === name) {
           return { ...animals, likes: animal.likes + 1 }
@@ -88,19 +92,16 @@ class App extends Component {
   }
 
 
-  searchHandler = (e) => {
-    this.setState({ search: e.target.value.toLowerCase() });
-  }
+
 
   render() {
-
 
     return (
       <div className="App" >
 
         <NavBar />
         <div className="main-content-container">
-          <Searchbar onChange={this.searchHandler} />
+          <Searchbar searchHandler={(e) => this.searchHandler(e)} />
 
           <Routes>
             <Route path="/" element={<Home />} />
@@ -108,20 +109,22 @@ class App extends Component {
             <Route path="/animals" element={<Animals
               animals={this.state.animals}
               search={this.state.search}
-              searchHandler={this.state.searchHandler}
-              animalRemoveHandler={this.state.animalRemoveHandler}
-              animaladdLikeHandler={this.state.animalAddLikeHandler}
-              animalRemoveLikeHandler={this.state.animalRemoveLikeHandler}
+              removeAnimal={this.animalRemoveHandler}
+              animalAddLike={this.animalAddLikeHandler}
+              animalRemoveLike={this.animalRemoveLikeHandler}
             />}></Route>
-            
+
             <Route path="/birds" element={<Birds
               birds={this.state.birds}
               search={this.state.search}
-              searchHandler={this.state.searchHandler}
-              birdRemoveHandler={this.state.birdRemoveHandler}
-              birdAddLikeHandler={this.state.birdAddLikeHandler}
-              birdRemoveLikeHandler={this.state.birdRemoveLikeHandler} />}>
+              searchHandler={this.searchHandler}
+              birdRemoveHandler={this.birdRemoveHandler}
+              birdAddLikeHandler={this.birdAddLikeHandler}
+              birdRemoveLikeHandler={this.birdRemoveLikeHandler} />}>
             </Route>
+
+            <Route path="/about" element={<About />}></Route>
+            <Route path="*" element={<NotFound />}></Route>
 
 
           </Routes>
@@ -135,13 +138,6 @@ class App extends Component {
 export default App;
 
 
-/*  
-          
-           
-               
-               */
 
-/*
-              
-              <Route path="/about" element={<About />}></Route>
-              <Route path="*" element={<NotFound />}></Route> */
+
+

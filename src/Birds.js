@@ -8,7 +8,7 @@ const Birds = (props) => {
     const birdsList = birdFilter.map((bird) => {
         return (
             <Card
-                name={bird.name.toLowerCase()}
+                name={bird.name}
                 key={bird.name.toLowerCase()}
                 likes={bird.likes}
                 removeCard={() => props.birdRemoveHandler(bird.name.toLowerCase())}
