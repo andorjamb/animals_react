@@ -1,0 +1,60 @@
+.home {
+    min-height: 80vh;
+    width: 100vw;
+    background-image: linear-gradient(to top right, var(--pale-blue), var(--mid-blue));
+
+}
+
+h1 {
+    display: block;
+    color: white;
+
+}
+
+.page-title {
+    display: block;
+    width: 100vw;
+    height: 100px;
+    margin: 1rem;
+}
+
+.main-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.home-card {
+    height: 300px;
+    width: 300px;
+    text-align: center;
+    flex: 1;
+    box-shadow: 0 0 5px grey;
+    border-radius: 30px;
+    margin: 1rem;
+
+}
+
+.home-card h2 {
+    padding: 1rem;
+}
+
+.animal {
+    background-image: url('./assets/vincent-van-zalinge-cHuKZSqvKgo-unsplash.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+
+.bird {
+    background-image: url('./assets/dominik-van-opdenbosch-lNeIjS1rXus-unsplash.jpg.crdownload');
+    background-size: cover;
+    background-repeat: no-repeat;
+}

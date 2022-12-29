@@ -1,85 +1,147 @@
 
 import './App.css';
-import { animals } from './animals';
-import Card from './Card';
-import Header from './Header';
+import { animals, birds } from './animalsbirds';
 import { Component } from 'react';
+import { Route, Routes, } from 'react-router-dom';
+import NavBar from './NavBar';
+import About from './About';
+import Animals from './Animals';
+import Birds from './Birds';
+import Home from './Home';
+import Searchbar from './Searchbar';
+import NotFound from './NotFound.js';
 
 class App extends Component {
   state = {
     animals: animals,
-    number: animals.length,
+    birds: birds,
     search: '',
-
   };
 
-  addLikeHandler = (name) => {
-    this.setState((state) => {
-      const updatedArray = this.state.animals.map((animal) => {
+  animalAddLikeHandler = (name) => {
+    this.setState((animals) => {
+      const updatedAnimals = this.state.animals.map((animal) => {
         if (animal.name === name) {
-          return { ...animal, likes: animal.likes + 1 }
+          return { ...animals, likes: animal.likes + 1 }
         }
         else { return animal }
       })
-
-      this.setState({ animals: updatedArray });
+      this.setState({ animals: updatedAnimals });
     }
     )
   };
 
-  removeLikeHandler = (name) => {
-    this.setState((state) => {
-      const updatedArray = this.state.animals.map((animal) => {
-        if (animal.name === name) {
+  birdAddLikeHandler = (name) => {
+    this.setState((birds) => {
+      const updatedBirds = this.state.birds.map((bird) => {
+        if (bird.name === name) {
+          return { ...birds, likes: bird.likes + 1 }
+        }
+        else { return bird }
+      })
+      this.setState({ birds: updatedBirds });
+    }
+    )
+  };
+
+
+  animalRemoveLikeHandler = (name) => {
+    this.setState((animals) => {
+      const updatedAnimals = this.state.animals.map((animal) => {
+        if (animal.name === name.toLowerCase()) {
           if (animal.likes === 0) {
             return { ...animal, likes: 0 }
           }
-          else { return { ...animal, likes: animal.likes - 1 } }
+          else { return { ...animals, likes: animal.likes - 1 } }
         }
         else { return animal }
       })
-      this.setState({ animals: updatedArray });
+      this.setState({ animals: updatedAnimals });
     })
   }
-  removeHandler = (name) => {
-    const updatedArray = this.state.animals.filter((animal) => animal.name !== name);
-    this.setState({ animals: updatedArray });
+
+  birdRemoveLikeHandler = (name) => {
+    this.setState((birds) => {
+      const updatedBirds = this.state.birds.map((bird) => {
+        if (bird.name === name.toLowerCase()) {
+          if (bird.likes === 0) {
+            return { ...bird, likes: 0 }
+          }
+          else { return { ...birds, likes: bird.likes - 1 } }
+        }
+        else { return bird }
+      })
+      this.setState({ birds: updatedBirds });
+    })
   }
+
+
+
+  animalRemoveHandler = (name) => {
+    const updatedAnimals = this.state.animals.filter((animal) => animal.name !== name.toLowerCase());
+    this.setState({ animals: updatedAnimals });
+  }
+
+  birdRemoveHandler = (name) => {
+    const updatedBirds = this.state.birds.filter((bird) => bird.name !== name.toLowerCase());
+    this.setState({ birds: updatedBirds });
+  }
+
 
   searchHandler = (e) => {
     this.setState({ search: e.target.value.toLowerCase() });
   }
 
   render() {
-    const animalFilter = this.state.animals.filter(animal => { return animal.name.includes(this.state.search); })
-    /**make a new array only containing what has been set in the search field */
 
-    const animalsList = animalFilter.map((animal) => {
-      return (
-        <Card
-          key={animal.name}
-          name={animal.name.charAt(0).toUpperCase() + animal.name.substring(1)}
-          likes={animal.likes}
-          removeCard={() => this.removeHandler(animal.name)}
-          addLikes={() => this.addLikeHandler(animal.name)}
-          removeLikes={() => this.removeLikeHandler(animal.name)}
-        />);
-    });
 
     return (
       <div className="App" >
-        <Header
-          number={this.state.animals.length}
-          click={() => this.setState({ animals: animals })}
-        />
-        <div className="searchBar"><input onChange={this.searchHandler}></input></div>
-        <div className="mainContainer">
 
-          {animalsList}
+        <NavBar />
+        <div className="main-content-container">
+          <Searchbar onChange={this.searchHandler} />
 
-        </div></div>)
+          <Routes>
+            <Route path="/" element={<Home />} />
+
+            <Route path="/animals" element={<Animals
+              animals={this.state.animals}
+              search={this.state.search}
+              searchHandler={this.state.searchHandler}
+              animalRemoveHandler={this.state.animalRemoveHandler}
+              animaladdLikeHandler={this.state.animalAddLikeHandler}
+              animalRemoveLikeHandler={this.state.animalRemoveLikeHandler}
+            />}></Route>
+            
+            <Route path="/birds" element={<Birds
+              birds={this.state.birds}
+              search={this.state.search}
+              searchHandler={this.state.searchHandler}
+              birdRemoveHandler={this.state.birdRemoveHandler}
+              birdAddLikeHandler={this.state.birdAddLikeHandler}
+              birdRemoveLikeHandler={this.state.birdRemoveLikeHandler} />}>
+            </Route>
+
+
+          </Routes>
+        </div>
+      </div>
+    )
   }
 
 }
 
 export default App;
+
+
+/*  
+          
+           
+               
+               */
+
+/*
+              
+              <Route path="/about" element={<About />}></Route>
+              <Route path="*" element={<NotFound />}></Route> */

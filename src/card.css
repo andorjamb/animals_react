@@ -7,6 +7,7 @@
     margin: 1rem;
     padding: 0;
     background-image: linear-gradient(rgb(58, 141, 192), rgb(214, 213, 109));
+    border-radius: 15px;
 }
 
 .removeBtn {
@@ -22,7 +23,7 @@ img {
     height: auto;
 }
 
-.titleBar {
+.name-div {
     display: flex;
     align-items: center;
     padding: 0.3rem;
@@ -30,6 +31,7 @@ img {
 
 h2 {
     flex: 3;
+    font-size: 1.2rem;
 }
 
 .likeBar {

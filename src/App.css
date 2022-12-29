@@ -3,12 +3,17 @@
 
 }
 
-.mainContainer {
+h1 {
+  display: block;
+  text-align: center;
+}
+
+.main-content-container {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   width: 100vw;
-  background-color: rgb(188, 188, 216);
+  background-image: linear-gradient(to top right, var(--pale-blue), var(--mid-blue));
 }
 
 .searchBar {

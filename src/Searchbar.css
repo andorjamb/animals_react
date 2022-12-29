@@ -1,0 +1,23 @@
+.searchbar {
+    background-image: linear-gradient(from top right, var(--pale-blue), var(--mid-blue));
+    height: 100px;
+    display: flex;
+    align-items: center;
+
+
+}
+
+label {
+    font-size: 1.2rem;
+    margin-right: 1rem;
+    color: white;
+}
+
+input {
+    height: 35px;
+    width: 250px;
+    border-radius: 10px;
+    border: none;
+    font-size: 1.2rem;
+    padding-left: 0.5rem;
+}
