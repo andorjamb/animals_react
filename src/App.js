@@ -22,26 +22,36 @@ class App extends Component {
     this.setState({ search: e.target.value.toLowerCase() });
   }
 
-  animalAddLikeHandler = (name) => {
-    this.setState(animals => {
-      const updatedAnimals = this.state.animals.map((animal) => {
-        if (animal.name === name) {
-          return { ...animals, likes: animal.likes + 1 }
-        }
-        else { return animal }
-      })
-      this.setState({ animals: updatedAnimals });
-    }
-    )
+  removeHandler = (name) => {
+    const updatedList = this.state.animals.filter((item) => item.name !== name);
+    this.setState({ animals: updatedList });
+  }
+
+  removeHandlerBirds = (name) => {
+    const updatedList = this.state.birds.filter((item) => item.name !== name);
+    this.setState({ birds: updatedList });
+  }
+
+
+  addLikeHandler = (name) => {
+
+    const updatedList = this.state.animals.map((item) => {
+      if (item.name === name) {
+        return { ...item, likes: item.likes + 1 }
+      }
+      else { return item }
+    })
+    this.setState({ animals: updatedList });
+
   };
 
-  birdAddLikeHandler = (name) => {
+  addLikeHandlerBirds = (name) => {
     this.setState((birds) => {
-      const updatedBirds = this.state.birds.map((bird) => {
-        if (bird.name === name) {
-          return { ...birds, likes: bird.likes + 1 }
+      const updatedBirds = this.state.birds.map((item) => {
+        if (item.name === name) {
+          return { ...item, likes: item.likes + 1 }
         }
-        else { return bird }
+        else { return item }
       })
       this.setState({ birds: updatedBirds });
     }
@@ -49,49 +59,38 @@ class App extends Component {
   };
 
 
-  animalRemoveLikeHandler = (name) => {
+  removeLikeHandler = (name) => {
     this.setState((animals) => {
-      const updatedAnimals = this.state.animals.map((animal) => {
-        if (animal.name === name.toLowerCase()) {
-          if (animal.likes === 0) {
-            return { ...animal, likes: 0 }
+      const updatedList = this.state.animals.map((item) => {
+        if (item.name === name.toLowerCase()) {
+          if (item.likes === 0) {
+            return { ...item, likes: 0 }
           }
-          else { return { ...animals, likes: animal.likes - 1 } }
+          else { return { ...item, likes: item.likes - 1 } }
         }
-        else { return animal }
+
+        else { return item }
       })
-      this.setState({ animals: updatedAnimals });
+      this.setState({ animals: updatedList });
     })
   }
 
-  birdRemoveLikeHandler = (name) => {
+
+
+  removeLikeHandlerBirds = (name) => {
     this.setState((birds) => {
-      const updatedBirds = this.state.birds.map((bird) => {
-        if (bird.name === name.toLowerCase()) {
-          if (bird.likes === 0) {
-            return { ...bird, likes: 0 }
+      const updatedList = this.state.birds.map((item) => {
+        if (item.name.toLowerCase() === name.toLowerCase()) {
+          if (item.likes === 0) {
+            return { ...item, likes: 0 }
           }
-          else { return { ...birds, likes: bird.likes - 1 } }
+          else { return { ...item, likes: item.likes - 1 } }
         }
-        else { return bird }
+        else { return item }
       })
-      this.setState({ birds: updatedBirds });
+      this.setState({ birds: updatedList });
     })
   }
-
-
-
-  removeAnimalHandler = (name) => {
-    const updatedAnimals = this.state.animals.filter((animal) => animal.name !== name.toLowerCase());
-    this.setState({ animals: updatedAnimals });
-  }
-
-  removeBirdHandler = (name) => {
-    const updatedBirds = this.state.birds.filter((bird) => bird.name.toLowerCase() !== name.toLowerCase());
-    this.setState({ birds: updatedBirds });
-  }
-
-
 
 
   render() {
@@ -109,30 +108,31 @@ class App extends Component {
             <Route path="/animals" element={<Animals
               animals={this.state.animals}
               search={this.state.search}
-              removeAnimal={this.removeAnimalHandler}
-              animalAddLike={this.animalAddLikeHandler}
-              animalRemoveLike={this.animalRemoveLikeHandler}
+              /*  removeAnimal={(name, list) => this.removeHandler(this.name, this.state.animals)} */
+              removeAnimal={this.removeHandler}
+              addLike={this.addLikeHandler}
+              removeLike={this.removeLikeHandler}
+
             />}></Route>
 
             <Route path="/birds" element={<Birds
               birds={this.state.birds}
               search={this.state.search}
-              searchHandler={this.searchHandler}
-              removeBird={this.removeBirdHandler}
-              birdAddLikeHandler={this.birdAddLikeHandler}
-              birdRemoveLikeHandler={this.birdRemoveLikeHandler} />}>
+              removeBird={this.removeHandlerBirds}
+              addLikeHandler={this.addLikeHandlerBirds}
+              removeLikeHandler={this.removeLikeHandlerBirds}
+
+
+            />}>
             </Route>
 
             <Route path="/about" element={<About />}></Route>
             <Route path="*" element={<NotFound />}></Route>
-
-
           </Routes>
         </div>
       </div>
-    )
+    );
   }
-
 }
 
 export default App;

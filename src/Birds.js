@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from './Card';
-import './Birds.css';
+import './Animals.css';
 
 const Birds = (props) => {
 
@@ -12,14 +12,14 @@ const Birds = (props) => {
                 key={bird.name.toLowerCase()}
                 likes={bird.likes}
                 removeCard={() => props.removeBird(bird.name)}
-                addLike={() => props.birdAddLikeHandler(bird.name)}
-                removeLike={() => props.birdRemoveLikeHandler(bird.name)}
-                searchHandler={() => props.searchHandler()}
+                addLike={() => props.addLikeHandler(bird.name)}
+                removeLike={() => props.removeLikeHandler(bird.name)}
+
             />);
     });
 
     return (
-        <div className='birds'>
+        <div className='animals'>
             <h1>Birds</h1>
             <div className="main-flex">
                 {birdsList}

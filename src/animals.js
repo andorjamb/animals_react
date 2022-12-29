@@ -4,6 +4,7 @@ import './Animals.css';
 
 
 const Animals = (props) => {
+
     const animalFilter = props.animals.filter(animal => animal.name.includes(props.search));
     const animalsList = animalFilter.map((animal) => {
         return <Card
@@ -11,8 +12,8 @@ const Animals = (props) => {
             key={animal.name}
             likes={animal.likes}
             removeCard={() => props.removeAnimal(animal.name)}
-            addLike={() => props.animalAddLike(animal.name)}
-            removeLike={() => props.animalRemoveLike(animal.name)}
+            addLike={() => props.addLike(animal.name)}
+            removeLike={() => props.removeLike(animal.name)}
 
         />
     });
@@ -25,5 +26,6 @@ const Animals = (props) => {
             </div></div>
     )
 }
+
 
 export default Animals;

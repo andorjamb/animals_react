@@ -16,6 +16,7 @@
     border-radius: 50%;
     height: 40px;
     width: 40px;
+    cursor: pointer;
 }
 
 img {
@@ -52,6 +53,7 @@ h2 {
     border: none;
     font-family: 'Material Symbols Outlined';
     font-size: 2rem;
+    cursor: pointer;
 
 
 }
