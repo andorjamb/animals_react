@@ -1,7 +1,6 @@
 .home {
     min-height: 80vh;
     width: 100vw;
-    background-image: linear-gradient(to top right, var(--pale-blue), var(--mid-blue));
 
 }
 
@@ -12,7 +11,6 @@ h1 {
 }
 
 .page-title {
-    display: block;
     width: 100vw;
     height: 100px;
     margin: 1rem;
@@ -20,8 +18,8 @@ h1 {
 
 .main-flex {
     display: flex;
-    align-items: center;
     justify-content: center;
+    padding-top: 2rem;
 
 }
 

@@ -8,10 +8,22 @@ h1 {
   text-align: center;
 }
 
+header {
+  background: transparent;
+}
+
+.searchbar {
+  grid-area: searchbar;
+  margin: auto;
+}
+
 .main-content-container {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  display: grid;
+  margin: auto;
+  grid-template-areas:
+    'searchbar'
+    'routes'
+    'footer';
   width: 100vw;
   background-image: linear-gradient(to top right, var(--pale-blue), var(--mid-blue));
 }
@@ -25,4 +37,8 @@ h1 {
   border-radius: 14px;
   border: inset;
 
+}
+
+.routes {
+  grid-area: routes;
 }

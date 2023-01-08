@@ -75,8 +75,6 @@ class App extends Component {
     })
   }
 
-
-
   removeLikeHandlerBirds = (name) => {
     this.setState((birds) => {
       const updatedList = this.state.birds.map((item) => {
@@ -92,44 +90,39 @@ class App extends Component {
     })
   }
 
-
   render() {
 
     return (
       <div className="App" >
-
-        <NavBar />
+        <header>
+          <NavBar /></header>
         <div className="main-content-container">
-          <Searchbar searchHandler={(e) => this.searchHandler(e)} />
-
-          <Routes>
-            <Route path="/" element={<Home />} />
-
-            <Route path="/animals" element={<Animals
-              animals={this.state.animals}
-              search={this.state.search}
-              removeAnimal={this.removeHandler}
-              addLike={this.addLikeHandler}
-              removeLike={this.removeLikeHandler}
-
-            />}></Route>
-
-            <Route path="/birds" element={<Birds
-              birds={this.state.birds}
-              search={this.state.search}
-              removeBird={this.removeHandlerBirds}
-              addLikeHandler={this.addLikeHandlerBirds}
-              removeLikeHandler={this.removeLikeHandlerBirds}
-
-
-            />}>
-            </Route>
-
-            <Route path="/about" element={<About />}></Route>
-            <Route path="*" element={<NotFound />}></Route>
-          </Routes>
+          <div className='searchbar'> <Searchbar searchHandler={(e) => this.searchHandler(e)} /></div>
+          <div className="routes">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/animals" element={<Animals
+                animals={this.state.animals}
+                search={this.state.search}
+                removeAnimal={this.removeHandler}
+                addLike={this.addLikeHandler}
+                removeLike={this.removeLikeHandler}
+              />}>
+              </Route>
+              <Route path="/birds" element={<Birds
+                birds={this.state.birds}
+                search={this.state.search}
+                removeBird={this.removeHandlerBirds}
+                addLikeHandler={this.addLikeHandlerBirds}
+                removeLikeHandler={this.removeLikeHandlerBirds}
+              />}>
+              </Route>
+              <Route path="/about" element={<About />}></Route>
+              <Route path="*" element={<NotFound />}></Route>
+            </Routes>
+          </div>
         </div>
-      </div>
+      </div >
     );
   }
 }

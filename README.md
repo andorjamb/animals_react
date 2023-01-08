@@ -4,7 +4,7 @@ Project work from React course, winter 2022.
 
 ## Live site
 
-link to live deploy on [Netlify](https://app.netlify.com/sites/react-animals-bch)
+link to live deploy on [Netlify](https://react-animals-bch.netlify.app/)
 
 
 ## Screenshot
