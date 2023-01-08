@@ -1,4 +1,4 @@
-export const animals = [
+export const animalslist = [
   { name: 'alligator', likes: 1 },
   { name: 'alpaca', likes: 1 },
   { name: 'ant', likes: 0 },

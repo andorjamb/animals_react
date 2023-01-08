@@ -1,6 +1,6 @@
 
 import './App.css';
-import { animals, birds } from './animalsbirds';
+import { animalslist, birds } from './animalsbirds';
 import { Component } from 'react';
 import { Route, Routes, } from 'react-router-dom';
 import NavBar from './NavBar';
@@ -13,7 +13,7 @@ import NotFound from './NotFound.js';
 
 class App extends Component {
   state = {
-    animals: animals,
+    animals: animalslist,
     birds: birds,
     search: '',
   };
@@ -108,7 +108,6 @@ class App extends Component {
             <Route path="/animals" element={<Animals
               animals={this.state.animals}
               search={this.state.search}
-              /*  removeAnimal={(name, list) => this.removeHandler(this.name, this.state.animals)} */
               removeAnimal={this.removeHandler}
               addLike={this.addLikeHandler}
               removeLike={this.removeLikeHandler}
